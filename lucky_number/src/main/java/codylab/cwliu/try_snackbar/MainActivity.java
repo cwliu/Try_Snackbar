@@ -22,8 +22,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         init_activity();
-        init_lucky_number_value();
-        init_float_action_button();
+
+        init_lucky_number_value();  // Snackbar without action
+        init_float_action_button(); // Snackbar with action
     }
 
     private void init_activity(){
@@ -41,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
         Snackbar.make(coordinator_layout,
                 "Your lucky number is: " + Integer.toString(new_lucky_number),
                 Snackbar.LENGTH_LONG).show();
-
     }
 
     private void init_float_action_button(){
@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int new_lucky_number = generate_lucky_number();
+
                 Snackbar snackbar = Snackbar.make(coordinator_layout,
                         "New lucky number is: " + new_lucky_number,
                         Snackbar.LENGTH_LONG);
@@ -66,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
                 });
 
                 snackbar.setActionTextColor(Color.RED);
-
                 snackbar.show();
             }
         });
