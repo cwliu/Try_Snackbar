@@ -13,7 +13,7 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    private View coordinatorlayout;
+    private View coordinator_layout;
     private int previous_lucky_number = -1;
     private int current_lucky_number = -1;
 
@@ -22,9 +22,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         init_activity();
-
         init_lucky_number_value();
-        init_fab();
+        init_float_action_button();
     }
 
     private void init_activity(){
@@ -33,21 +32,29 @@ public class MainActivity extends AppCompatActivity {
             actionbar.hide();
         }
         setContentView(R.layout.activity_main);
-        coordinatorlayout = findViewById(R.id.coordinatorlayout);
+        coordinator_layout = findViewById(R.id.coordinatorlayout);
     }
 
-    private void init_fab(){
+    private void init_lucky_number_value(){
+        int new_lucky_number = generate_lucky_number();
+
+        Snackbar.make(coordinator_layout, "Your lucky number is: " + Integer.toString(new_lucky_number),
+                Snackbar.LENGTH_LONG).show();
+
+    }
+
+    private void init_float_action_button(){
         FloatingActionButton fab = (FloatingActionButton)  findViewById(R.id.generate_number_fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int new_lucky_number = generate_lucky_number();
-                Snackbar snackbar = Snackbar.make(coordinatorlayout, "New lucky number is: " + new_lucky_number, Snackbar.LENGTH_LONG);
+                Snackbar snackbar = Snackbar.make(coordinator_layout, "New lucky number is: " + new_lucky_number, Snackbar.LENGTH_LONG);
                 snackbar.setAction("Restore", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         undo_lucky_number();
-                        Snackbar.make(coordinatorlayout, "Lucky number is restored", Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(coordinator_layout, "Lucky number is restored", Snackbar.LENGTH_LONG).show();
 
                     }
                 });
@@ -55,14 +62,6 @@ public class MainActivity extends AppCompatActivity {
                 snackbar.show();
             }
         });
-    }
-
-    private void init_lucky_number_value(){
-        int new_lucky_number = generate_lucky_number();
-
-        Snackbar.make(coordinatorlayout, "Your lucky number is: " + Integer.toString(new_lucky_number),
-                Snackbar.LENGTH_LONG).show();
-
     }
 
     private int generate_lucky_number() {
