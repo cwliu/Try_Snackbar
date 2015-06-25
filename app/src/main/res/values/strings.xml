@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Try_Snackbar</string>
+
+    <string name="lucky_number_title">Lucky number</string>
+    <string name="lucky_number_value">N/A</string>
+    <string name="action_settings">settings</string>
+    <string name="generate">Generate</string>
+</resources>
