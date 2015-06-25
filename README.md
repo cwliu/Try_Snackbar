@@ -1,15 +1,17 @@
-In app build.gradle, 
+# Setup
+
+In app build.gradle,
 
     dependencies {
         ...
         compile 'com.android.support:design:22.2.0'
     }
 
-# Show snackbar 
+# Show snackbar
 
     Snackbar.make(view, "Hello world",Snackbar.LENGTH_LONG).show();
 
-# Set snackbar action 
+# Set snackbar action
 
     snackbar.setAction("Undo", new View.OnClickListener() {
         @Override
@@ -23,9 +25,9 @@ In app build.gradle,
     coordinator_layout = findViewById(R.id.coordinatorlayout);
     Snackbar.make(coordinator_layout, "Hi", Snackbar.LENGTH_LONG).show();
 
-# Customize snackbar styling 
+# Customize snackbar styling
 
-In stlyings.xml, 
+In stlyings.xml,
 
     <style name="Widget.Design.Snackbar" parent="android:Widget">
         <item name="android:background">#00FF00</item>
