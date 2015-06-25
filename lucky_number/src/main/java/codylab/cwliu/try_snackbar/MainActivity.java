@@ -38,27 +38,35 @@ public class MainActivity extends AppCompatActivity {
     private void init_lucky_number_value(){
         int new_lucky_number = generate_lucky_number();
 
-        Snackbar.make(coordinator_layout, "Your lucky number is: " + Integer.toString(new_lucky_number),
+        Snackbar.make(coordinator_layout,
+                "Your lucky number is: " + Integer.toString(new_lucky_number),
                 Snackbar.LENGTH_LONG).show();
 
     }
 
     private void init_float_action_button(){
-        FloatingActionButton fab = (FloatingActionButton)  findViewById(R.id.generate_number_fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.lucky_number_fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int new_lucky_number = generate_lucky_number();
-                Snackbar snackbar = Snackbar.make(coordinator_layout, "New lucky number is: " + new_lucky_number, Snackbar.LENGTH_LONG);
+                Snackbar snackbar = Snackbar.make(coordinator_layout,
+                        "New lucky number is: " + new_lucky_number,
+                        Snackbar.LENGTH_LONG);
+
                 snackbar.setAction("Restore", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         undo_lucky_number();
-                        Snackbar.make(coordinator_layout, "Lucky number is restored", Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(coordinator_layout,
+                                "Lucky number is restored",
+                                Snackbar.LENGTH_LONG).show();
 
                     }
                 });
+
                 snackbar.setActionTextColor(Color.RED);
+
                 snackbar.show();
             }
         });
@@ -80,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void undo_lucky_number(){
         current_lucky_number = previous_lucky_number;
+        previous_lucky_number = -1;
         update_lucky_number_text_view(current_lucky_number);
     }
 }
